@@ -8,6 +8,7 @@ public class Main extends JFrame {
 
     public static void main(String[] args){
         final GameManager gameManager = GameManager.getInstance();
+        gameManager.setDefaultScene(new TestScene());
         gameManager.startGame();
     }
 }

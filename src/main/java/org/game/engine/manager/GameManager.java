@@ -1,7 +1,6 @@
 package org.game.engine.manager;
 
 import org.game.engine.manager.scene.Scene;
-import org.game.engine.manager.scene.TestScene;
 
 import javax.swing.*;
 
@@ -26,7 +25,6 @@ public class GameManager {
     private GameManager() {
         frame = new JFrame("No Name Platformer");
         renderingManager = new Graphics2DRenderingManager();
-        activeScene = new TestScene();
         physicsManager = new PhysicsManager();
     }
 
@@ -34,11 +32,15 @@ public class GameManager {
      * Set up the window and start the default scene. Start invoking update.
      */
     public void startGame() {
+        if (activeScene == null) {
+            throw new RuntimeException("active scene cannot be null when starting a game.");
+        }
         frame.add(renderingManager);
-        frame.setSize(1366,768);
+        frame.setSize(640,480);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //frame.pack();//sizes frame based on size of components
         frame.setVisible(true);
+        frame.addKeyListener(KeyState.getInstance());
         startScene(activeScene);
         new Timer(TIMER_DELAY, e -> update()).start();
     }
@@ -50,6 +52,13 @@ public class GameManager {
         renderingManager.update(activeScene.getActiveGameObjects());
         physicsManager.update(activeScene.getActiveGameObjects());
         activeScene.getActiveGameObjects().forEach(g -> g.update());
+    }
+
+    /**
+     * Set default scene.
+     */
+    public void setDefaultScene(final Scene scene) {
+        this.activeScene = scene;
     }
 
     /**
