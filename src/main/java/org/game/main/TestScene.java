@@ -16,7 +16,7 @@ public class TestScene extends Scene {
         GameObject object = new GameObject();
 
         object.addComponent(Collider.class, new Collider(5, 5));
-        object.addComponent(Renderer.class, new ShapeRenderer(object, Color.BLUE) {
+        object.addComponent(Renderer.class, new ShapeRenderer(Color.BLUE) {
         });
         object.addComponent(Player.class, new Player());
 

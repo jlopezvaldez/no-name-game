@@ -2,7 +2,6 @@ package org.game.engine.manager;
 
 import org.game.engine.manager.component.render.Renderer;
 import org.game.engine.manager.gameobject.GameObject;
-import org.game.engine.manager.component.render.ShapeRenderer;
 
 
 import javax.swing.*;

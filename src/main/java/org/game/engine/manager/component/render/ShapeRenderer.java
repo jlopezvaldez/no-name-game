@@ -4,7 +4,6 @@ import org.game.engine.manager.gameobject.GameObject;
 import org.game.engine.manager.gameobject.Vector3;
 
 import java.awt.Graphics2D;
-import java.awt.Shape;
 import java.awt.Color;
 import java.awt.geom.AffineTransform;
 
@@ -12,7 +11,7 @@ public class ShapeRenderer extends Renderer {
 
     private Color color;
 
-    public ShapeRenderer(GameObject gameObject,  Color color) {
+    public ShapeRenderer(Color color) {
         super();
         this.color = color;
     }
