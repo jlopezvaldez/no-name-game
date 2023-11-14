@@ -1,6 +1,5 @@
 package org.game.engine.manager.component.render;
 
-import org.game.engine.manager.gameobject.GameObject;
 import org.game.engine.manager.gameobject.Vector3;
 
 import java.awt.Graphics2D;
