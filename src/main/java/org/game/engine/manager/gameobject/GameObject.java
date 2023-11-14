@@ -76,4 +76,8 @@ public class GameObject {
     public <T extends Component> boolean hasComponent(Class<T> type) {
         return components.containsKey(type);
     }
+
+    public int getZOrder() {
+       return position.z;
+    }
 }

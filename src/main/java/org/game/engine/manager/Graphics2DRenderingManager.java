@@ -1,12 +1,12 @@
 package org.game.engine.manager;
 
-import org.game.engine.manager.component.DummyRenderer;
+import org.game.engine.manager.component.render.Renderer;
 import org.game.engine.manager.gameobject.GameObject;
+import org.game.engine.manager.component.render.ShapeRenderer;
+
 
 import javax.swing.*;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Color;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,10 +28,11 @@ public class Graphics2DRenderingManager extends JComponent {
 
         g2d.setColor(Color.BLACK);
         g2d.fillRect(0, 0, getWidth(), getHeight());
-
+        System.out.println(getWidth());
+        System.out.println(getHeight());
         gameObjects.stream().forEach(gameObject -> {
-            if (gameObject.hasComponent(DummyRenderer.class))
-                gameObject.getComponent(DummyRenderer.class).render(g2d);
+            if (gameObject.hasComponent(Renderer.class))
+                gameObject.getComponent(Renderer.class).render(g2d);
         });
     }
 
@@ -43,6 +44,7 @@ public class Graphics2DRenderingManager extends JComponent {
         // TODO: Eventually we should not render objects that are off screen.
         // Get list of renderers from gameObjects, sort by position.Z and paint.
         this.gameObjects = gameObjects;
+//        gameObjects.sort(Comparator.comparingInt(GameObject::getZOrder));
         repaint();
     }
 }

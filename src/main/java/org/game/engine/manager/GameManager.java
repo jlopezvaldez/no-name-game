@@ -37,6 +37,7 @@ public class GameManager {
         }
         frame.add(renderingManager);
         frame.setSize(640,480);
+        frame.setLocationRelativeTo(null); //puts frame in middle of screen
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //frame.pack();//sizes frame based on size of components
         frame.setVisible(true);
