@@ -7,6 +7,7 @@ import org.game.engine.manager.gameobject.Vector3;
 import org.game.engine.manager.component.render.ShapeRenderer;
 import org.game.engine.manager.scene.Scene;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class TestScene extends Scene {
@@ -14,6 +15,8 @@ public class TestScene extends Scene {
     @Override
     public void start() {
         GameObject object = new GameObject();
+
+        Image image = new ImageIcon(getClass().getClassLoader().getResource("plane.png")).getImage();
 
         object.addComponent(Collider.class, new Collider(5, 5));
         object.addComponent(Renderer.class, new ShapeRenderer(Color.BLUE) {

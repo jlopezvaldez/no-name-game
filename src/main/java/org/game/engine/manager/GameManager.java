@@ -51,7 +51,7 @@ public class GameManager {
      */
     public void update() {
         renderingManager.update(activeScene.getActiveGameObjects());
-        physicsManager.update(activeScene.getActiveGameObjects());
+        physicsManager.checkCollisions(activeScene.getActiveGameObjects());
         activeScene.getActiveGameObjects().forEach(g -> g.update());
     }
 
