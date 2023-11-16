@@ -1,5 +1,6 @@
 package org.game.engine.manager.component;
 
+import org.game.engine.manager.component.collider.Collision;
 import org.game.engine.manager.gameobject.GameObject;
 import org.game.engine.manager.gameobject.Vector3;
 
@@ -43,6 +44,16 @@ public abstract class Component {
     }
 
     /**
+     * Run by the game manager once a frame.
+     */
+    public void update() {}
+
+    /**
+     * Run by the game manager at the beginning of a scene or upon being added to a GameObject.
+     */
+    public void start() {}
+
+    /**
      * Set position relative to the GameObject which the component is attached to.
      *
      * @param position - Offset from GameObject's global position
@@ -64,4 +75,6 @@ public abstract class Component {
             localPosition = position;
         }
     }
+
+    public void onCollision(final Collision collision) {}
 }

@@ -12,7 +12,7 @@ import java.util.Map;
 public class GameObject {
 
     private boolean active;
-    private Map<Class<? extends Component>, Object> components;
+    private Map<Class<? extends Component>, Component> components;
     private Vector3 position = Vector3.ZERO;
 
 
@@ -36,21 +36,21 @@ public class GameObject {
     }
 
     public void onCollision(final Collision collision) {
-
+        this.components.values().forEach(o -> o.onCollision(collision));
     }
 
     /**
      * Called by the GameManager every frame, if the GameObject is in the active scene.
      */
-    public void update() {
-
+    public final void update() {
+        this.components.values().forEach(o -> o.update());
     }
 
     /**
      * Start is called upon scene load, regardless of if the object is active or not.
      */
     public void start() {
-
+        this.components.values().forEach(o -> o.start());
     }
 
     /**
@@ -75,5 +75,9 @@ public class GameObject {
 
     public <T extends Component> boolean hasComponent(Class<T> type) {
         return components.containsKey(type);
+    }
+
+    public int getZOrder() {
+       return position.z;
     }
 }
